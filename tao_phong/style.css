@@ -1,0 +1,101 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #2d2a54;
+  color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: url("space-background.png") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+}
+
+.header h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #ffd700;
+}
+
+.room-config,
+.content-settings {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgba(0, 0, 50, 0.7);
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #ffd700;
+}
+
+.course-type,
+.class-selection,
+.subject-selection,
+.course-selection,
+.selected-materials {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1rem;
+}
+
+.course-buttons button,
+.buttons button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.course-buttons .selected {
+  background-color: #ff5733;
+}
+
+.course-buttons button {
+  background-color: #5d5f6b;
+  color: #fff;
+}
+
+.buttons button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #ff5733;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons .exit {
+  background-color: #808080;
+}
+
+select {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+}
+
+.selected-materials p {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+}

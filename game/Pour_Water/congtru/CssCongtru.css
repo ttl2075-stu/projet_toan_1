@@ -1,0 +1,36 @@
+.waterfall {
+    display: none;
+    background-color: #87d4df;
+}
+
+main {
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+
+.ly {
+    cursor: pointer;
+}
+
+.voinuoc {
+    width: 3vw;
+    position: absolute;
+    bottom: 0%;
+    transform: translate(10%, 20%);
+}
+
+.waterfall.phepcong {
+    height: 450px;
+}
+
+.waterfall.pheptru {
+    left: 15%;
+    height: 350px;
+}
+
+
+.water-out {
+    display: flex;
+    justify-content: space-around;
+    opacity: 50%;
+}

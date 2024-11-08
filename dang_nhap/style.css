@@ -1,0 +1,129 @@
+/* Đặt lại phần mặc định của trình duyệt */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('../assets/loginbg.png') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h2 {
+  text-align: left;
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.login-container, .register-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  padding: 12px;
+  background-color: #0f47ad;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #0c398a;
+}
+
+.a-register, .a-login {
+  margin-top: 20px;
+}
+
+.message {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  display: none;
+}
+
+.error-message.active {
+  display: block;
+  animation: shake 0.5s ease;
+}
+
+/* Hiệu ứng lắc khi có lỗi */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Icon lỗi */
+.error-icon {
+  margin-right: 10px;
+}
+
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+.footer p {
+  margin-bottom: 0;
+}

@@ -1,0 +1,345 @@
+/* CSS TOÀN TRANG HTML */
+.html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Helvetica, sans-serif;
+    user-select: none;
+    -webkit-user-drag: none;
+    margin: 10px 15px;
+    background: url(../../media/background2.webp) no-repeat fixed;
+    background-size: cover;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+}
+/* CSS BUTTON */
+button {
+    font-size: 1.4rem;
+    padding: 6px 30px;
+}
+
+.bn632-hover {
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 20px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 10px;
+}
+
+.bn632-hover:hover {
+    background-position: 100% 0;
+    transition: all 0.4s ease-in-out;
+}
+
+.bn632-hover:active {
+    background-position: -300% 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.bn632-hover.bn26 {
+    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+
+.bn632-hover.bn26.cancel {
+        background-image: linear-gradient(to right, #ff4b5c, #ff9068, #ff4b5c, #ff9068);
+        box-shadow: 0 4px 15px 0 rgba(255, 75, 92, 0.75);
+    }
+
+
+/* PHẦN THÔNG BÁO KẾT QUẢ */
+.popupCheck{
+    display: none;
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 13;
+    opacity: 1;
+    padding: 20%;
+}
+
+.popupCheck-win,
+.popupCheck-lose {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+}
+
+.popupCheck-img {
+    width: 100%; 
+    height: auto; 
+}
+
+/* PHẦN SETTING */
+.setting { 
+    display: none;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 12;
+    opacity: 1;
+    padding: 20%;
+}
+.setting-container {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.setting-container h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+.setting-container-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.setting-container h3 {
+    display: inline-block;
+    font-size: 1.4rem;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.setting-container-select select {
+    font-size: 1.4rem;
+    padding: 6px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+}
+
+/* PHẦN YÊU CẦU ĐỀ BÀI */
+.yeucau {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+.yeucau h2 {
+    color: #333;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* PHẦN CA NƯỚC */
+nav {
+    height: 100px;
+    width: 100%;
+    background-color: rgb(178, 235, 242);
+    border-radius: 8px;
+    font-size: 2.4rem;
+    color: yellow;
+    font-weight: bold;
+    position: relative;
+}
+
+#canuoc {
+    position: absolute;
+    top: 20px;
+}
+
+#canuoc img {
+    width: 80px;
+}
+
+.slide {
+    animation: slide 15000ms infinite linear;
+}
+
+@keyframes slide {
+    0% {
+        left: 0;
+    }
+    50% {
+        left: calc(100% - 80px);
+    }
+    100% {
+        left: 0;
+    }
+}
+
+/* PHẦN GIAO DIỆN CHÍNH - DÀNH CHO HS */
+main {
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+div.ques-ly {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #ff0000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.warpper-ly {
+    height: auto;
+    position: relative;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+.warpper-ly > span {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+@keyframes moDebai {
+    0% {
+        left: 50;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+@keyframes dongDebai {
+    0% {
+        left: 150%;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+.warpper-ly .ly {
+    width: 7vw;
+    height: 300px;
+    border: 2px solid #000;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: transparent;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 25px;
+}
+
+.naply {
+    width: 7vw;
+    position: relative;
+}
+
+.warpper-ly .ly .waterr {
+    position: relative;
+    width: 100%;
+    height: 0;
+    z-index: -1;
+    border-bottom: 1px inset #fff;
+    animation: fillWater 2000ms forwards;
+}
+
+@keyframes moNapLy {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes dongNapLy {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: 0%;
+    }
+}
+
+.waterr:first-child {
+    border-bottom: none !important;
+}
+
+.aniNone {
+    animation: none;
+}
+
+@keyframes fillWater {
+    from {
+        height: 0;
+    }
+    to {
+        height: 10%;
+    }
+}
+
+@keyframes dropWater {
+    from {
+        height: 10%;
+    }
+    to {
+        height: 0%;
+    }
+}
+
+.warpper-ly .ly .waterrr {
+    position: absolute;
+    bottom: 0;
+    z-index: -3;
+    width: 100%;
+    height: 0%;
+    background-color: #8dccf6;
+    transition: all 2000ms ease-in;
+}
+
+/* PHẦN NÚT BẤM DÀNH CHO HS */
+.action {
+    margin: 20px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action button {
+    margin: 0 50px;
+}
