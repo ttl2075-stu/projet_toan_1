@@ -7,6 +7,10 @@ include "../ham.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="b1.css">
     <title>Tính số lượng câu dựa trên tỷ lệ %</title>
     <link rel="stylesheet" href="b1.css"> <!-- Liên kết đến tệp CSS -->
     <style>
@@ -17,8 +21,37 @@ include "../ham.php";
 </head>
 
 <body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="./" class="logo-img"></a>
+                <span>Toán 1</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#">Tìm phòng đấu</a></li>
+                    <li><a href="#">Bảng xếp hạng</a></li>
+                    <li><a href="#">Phần thưởng</a></li>
+                    <li><a href="#">Thông báo</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-info">
+                <!-- <img src="user-avatar.png" alt="User Avatar" class="user-avatar" id="userAvatar"> -->
+                <span id="userName"><?php echo $_SESSION['username'] ?></span>
+                <div class="dropdown-menu dropdown-menu-right" id="dropdownMenu">
+                    <ul>
+                        <li><a href="#">Trang cá nhân</a></li>
+                        <li><a href="../dang_xuat/">Đăng xuất</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="container">
-        <h1>Nhập giải giá trị tsố</h1>
+        <h1>Nhập giải giá trị tham số</h1>
 
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,58 +60,80 @@ include "../ham.php";
                 $selected_bai_hoc = $_POST['bai_hoc']; // Mảng chứa các id bài học đã chọn
                 $ten_phong  = $_POST['ten_phong'];
         ?>
-                <form action="" method="post">
-                    <input type="hidden" name="loai_phong" value="<?php echo $_POST['loai_phong']; ?>">
-                    <input type="hidden" name="ten_phong" value="<?php echo $_POST['ten_phong']; ?>">
-                    <?php
-                    // $ten_phong  = $_POST['ten_phong'];
-                    echo "<br>Các chủ đề vừa chọn:<br>";
-                    foreach ($selected_bai_hoc as $index => $bai_hoc_id) {
+        <form action="" method="post">
+            <input type="hidden" name="loai_phong" value="<?php echo $_POST['loai_phong']; ?>">
+            <input type="hidden" name="ten_phong" value="<?php echo $_POST['ten_phong']; ?>">
+            
+            <?php
+            // $ten_phong  = $_POST['ten_phong'];
+            echo "<p>Các chủ đề vừa chọn:</p>";
+            foreach ($selected_bai_hoc as $index => $bai_hoc_id) {
 
-                        echo "<div class='lesson-container'>";
-                        echo "Bài học: " . get_ten_bai_hoc($bai_hoc_id) . "<br>";
-                        echo "<input type='hidden' name='id_bai_hoc[]' value='$bai_hoc_id'>";
-                        // Nút để mở rộng/thu gọn
-                        echo "<span class='toggle-button' onclick='toggleContent($index)'>Mở rộng</span>";
-                        echo "<div id='content-$index' class='content'>"; // ID cho nội dung mở rộng
-                        echo " <script>
-        var content = document.getElementById('content-' + $index);
-        content.style.display = 'none';
-    </script>";
-                        // Ô nhập cho các giá trị cần nhập và tính toán
-                        echo "<label for='question_count_$index'>Số lượng câu hỏi:</label>";
-                        echo "<input type='number' value='5' min='1' max ='20' name='question_count[]' id='question_count_$index' required><br>";
+                echo "<div class='lesson-container'>";
+                echo "
+                    <div class='d-flex justify-content-between'>
+                        <p class='fw-bold'>Chủ đề: " . get_ten_bai_hoc($bai_hoc_id) . "</p>
+                        <span class='toggle-button btn btn-secondary' onclick='toggleContent($index)'>Mở rộng</span>
+                    </div>
+                ";
+                echo "<input type='hidden' name='id_bai_hoc[]' value='$bai_hoc_id'>";
+                // Nút để mở rộng/thu gọn
+                //echo "<span class='toggle-button btn btn-secondary' onclick='toggleContent($index)'>Mở rộng</span>";
+                echo "<div id='content-$index' class='content'>"; // ID cho nội dung mở rộng
+                echo "
+                    <script>
+                        var content = document.getElementById('content-' + $index);
+                        content.style.display = 'none';
+                    </script>
+                ";
+                // Ô nhập cho các giá trị cần nhập và tính toán
+                // Group SL câu hỏi, SL ly nước
+                echo '<div class="input-group">';
+                echo "<label for='question_count_$index' class='input-group-text fw-bold col-2'>Số lượng câu hỏi:</label>";
+                echo "<input class='form-control' type='number' value='5' min='1' max ='20' name='question_count[]' id='question_count_$index' required><br>";
+                echo "<div class='thin'></div><div class='thin'></div><div class='thin'></div>";
+                echo "<label for='sl_coc$index' class='input-group-text fw-bold col-2'>Số lượng cốc:</label>";
+                echo "<input class='form-control' type='number'  value ='3' min='1' max ='10'  name='sl_coc' id='sl_coc_value_$index' required><br>";
+                echo "</div>";
+                
+                // Group số lượng cột, hàng
+                echo '<div class="input-group">';
+                echo "<label for='sl_cot_$index' class='input-group-text fw-bold col-2'>Số lượng cột:</label>";
+                echo "<input class='form-control' type='number'  value ='3' min='1' max ='10' name='sl_cot[]' id='sl_cot_$index' required><br>";
+                echo "<div class='thin'></div><div class='thin'></div><div class='thin'></div>";
+                echo "<label for='sl_hang_$index' class='input-group-text fw-bold col-2'>Số lượng hàng:</label>";
+                echo "<input class='form-control' type='number'  value ='3' min='1' max ='10' name='sl_hang[]' id='sl_hang_$index' required><br>";
+                echo "</div>";
 
-                        echo "<label for='min_value_$index'>Số nhỏ nhất:</label>";
-                        echo "<input type='number' value ='1' min='1' max ='10' name='min_value[]' id='min_value_$index' required><br>";
+                // Group giá trị min, max
+                echo '<div class="input-group">';
+                echo "<label for='min_value_$index' class='input-group-text fw-bold col-2'>Số nhỏ nhất:</label>";
+                echo "<input class='form-control' type='number' value ='1' min='1' max ='10' name='min_value[]' id='min_value_$index' required><br>";
+                echo "<div class='thin'></div><div class='thin'></div><div class='thin'></div>";
+                echo "<label for='max_value_$index' class='input-group-text fw-bold col-2'>Số lớn nhất:</label>";
+                echo "<input class='form-control' type='number'  value ='10' min='1' max ='10' name='max_value[]' id='max_value_$index' required><br>";
+                echo "</div>";
+                
+                // Group giá trị cần chọn, tổng, hiệu
+                echo '<div class="input-group">';
+                echo "<label for='selected_value_$index' class='input-group-text fw-bold col-2'>Số cần chọn:</label>";
+                echo "<input class='form-control' type='number'  value ='3' min='1' max ='10' name='selected_value[]' id='selected_value_$index' required><br>";
+                echo "<div class='thin'></div><div class='thin'></div><div class='thin'></div>";
+                echo "<label for='sum_value_$index' class='input-group-text fw-bold col-1'>Tổng:</label>";
+                echo "<input class='form-control' type='number'  value ='3' min='1' max ='10' name='sum_value[]' id='sum_value_$index' required><br>";
+                echo "<div class='thin'></div><div class='thin'></div><div class='thin'></div>";
+                echo "<label for='difference_value_$index' class='input-group-text fw-bold col-1'>Hiệu:</label>";
+                echo "<input class='form-control' type='number'  value ='3' min='1' max ='10' name='difference_value[]' id='difference_value_$index' required><br>";
+                echo "</div>";
 
-                        echo "<label for='max_value_$index'>Số lớn nhất:</label>";
-                        echo "<input type='number'  value ='10' min='1' max ='10' name='max_value[]' id='max_value_$index' required><br>";
 
-                        echo "<label for='sl_cot_$index'>Số lượng cột:</label>";
-                        echo "<input type='number'  value ='3' min='1' max ='10' name='sl_cot[]' id='sl_cot_$index' required><br>";
+                echo "</div>"; // Kết thúc nội dung mở rộng
+                echo "</div>"; // Kết thúc lesson-container
+            }
+            ?>
+            <input type="submit" name="btn_xac_nhan" value="Xác nhận" class="btn-confirm">
+        </form>
 
-                        echo "<label for='sl_hang_$index'>Số lượng hàng:</label>";
-                        echo "<input type='number'  value ='3' min='1' max ='10' name='sl_hang[]' id='sl_hang_$index' required><br>";
-
-                        echo "<label for='selected_value_$index'>Số cần chọn:</label>";
-                        echo "<input type='number'  value ='3' min='1' max ='10' name='selected_value[]' id='selected_value_$index' required><br>";
-
-                        echo "<label for='sum_value_$index'>Tổng:</label>";
-                        echo "<input type='number'  value ='3' min='1' max ='10' name='sum_value[]' id='sum_value_$index' required><br>";
-
-                        echo "<label for='difference_value_$index'>Hiệu:</label>";
-                        echo "<input type='number'  value ='3' min='1' max ='10' name='difference_value[]' id='difference_value_$index' required><br>";
-
-                        echo "<label for='sl_coc$index'>Số lượng cốc:</label>";
-                        echo "<input type='number'  value ='3' min='1' max ='10'  name='sl_coc' id='sl_coc_value_$index' required><br>";
-
-                        echo "</div>"; // Kết thúc nội dung mở rộng
-                        echo "</div>"; // Kết thúc lesson-container
-                    }
-                    ?>
-                    <input type="submit" name="btn_xac_nhan" value="Xác nhận" class="btn-confirm">
-                </form>
         <?php
             } else if (isset($_POST['btn_xac_nhan'])) {
                 // Xử lý khi người dùng nhấn nút xác nhận
@@ -228,3 +283,22 @@ include "../ham.php";
 </body>
 
 </html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const userName = document.getElementById("userName");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+
+        // Khi nhấn vào tên người dùng, hiển thị hoặc ẩn menu
+        userName.addEventListener("click", function() {
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        });
+
+        // Khi nhấn ra ngoài menu thì ẩn menu
+        document.addEventListener("click", function(event) {
+            if (!userName.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.style.display = "none";
+            }
+        });
+    });
+</script>
